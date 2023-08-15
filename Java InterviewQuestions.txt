@@ -1,0 +1,724 @@
+***********************************hashmap working*****************************************************
+
+HashMap in Java is a hash table-based implementation of the Map interface, which stores the key-value pairs in a hash table data structure. It uses the hashing technique to store the elements and retrieve them quickly.
+	
+When a key-value pair is added to a HashMap, the key is hashed using the hashCode() method and the resulting hash code is used to compute the index of the corresponding bucket (an array of linked list nodes) in the hash table. If multiple keys have the same hash code, they are stored in the same bucket, forming a linked list. Each node in the linked list contains the key-value pair and a reference to the next node in the list.
+
+To retrieve a value for a given key, the hashCode() method is first called on the key to find the corresponding bucket in the hash table. If multiple keys are present in the same bucket, the equals() method is used to find the correct key-value pair in the linked list.
+
+The size of the hash table is dynamically increased or decreased based on the number of key-value pairs stored in the HashMap, which is controlled by the load factor. The default load factor is 0.75, which means that the hash table will be resized when the number of elements exceeds 75% of the current capacity.
+
+HashMap is not thread-safe by default, and it is recommended to use ConcurrentHashMap or synchronizedMap to make it thread-safe. Additionally, the keys and values in a HashMap can be iterated over using the keySet(), values(), and entrySet() methods.
+
+******************************************Multithreading****************************************
+
+Multithreading is the process of executing multiple threads simultaneously.It aims to improve performance by dividing tasks into smaller units, that runs parallely to execute multiple tasks. Multithreading also poses challenges like deadlocks, race-conditions, which can be prevented using Synchronization mechanisms like mutex and semaphores.
+Mutexes ensure mutual exclusion, allowing only one thread to access a shared resource at a time. Semaphores, on the other hand, control access to a shared resource by maintaining a count of available resources.
+ 
+----------------------------------------------------------------------------------------------------
+
+#wait() method is used for inter-thread communication and is typically used when a thread needs to wait for some other thread to perform some action before proceeding.
+
+#sleep() method is used to pause the execution of a thread for a specific amount of time. 
+
+#join() method in the Thread class is used to wait for a thread to complete its execution before moving on to the next steps. When a thread invokes join() on another thread, the first thread will wait for the second thread to finish execution before proceeding further.
+
+#yield() method in the Thread class is used to temporarily pause the currently executing thread and give a chance for other threads of the same priority to run.
+
+* Deadlock is a situation in multi-threaded programming where two or more threads are blocked and waiting for each other to release the resources they hold, resulting in a situation where none of the threads can proceed.
+Condition for deadlock-
+1.Mutual Exclusion
+2.Hold And Wait
+3.No-Preemption
+4.Circular Wait
+
+**Process means any program is in execution. Thread means a segment of a process.
+**Threads are independent paths of execution within a program and are useful for performing multiple tasks simultaneously. Each thread has its own call stack, but they share the same memory space, allowing them to communicate and share data with each other.
+
+Busy waiting is a technique in multi-threading where a thread repeatedly checks for a condition to be true while consuming CPU cycles, instead of waiting for the condition to be true by putting the thread to sleep. This technique can be used to achieve synchronization between threads or to wait for a resource to become available. 
+
+# Daemon thread in Java is a low-priority thread that runs in the background to perform tasks such as garbage collection. Daemon thread in Java is also a service provider thread that provides services to the user thread. Its life depends on the mercy of user threads i.e. when all the user threads die, JVM terminates this thread automatically.
+
+Q.Can we start a thread twice?
+=>No. After starting a thread, it can never be started again. If you does so, an IllegalThreadStateException is thrown. In such case, thread will run once but for second time, it will throw exception.
+
+Q.What if we call Java run() method directly instead start() method?
+=>Each thread starts in a separate call stack.
+Invoking the run() method from the main thread, the run() method goes onto the current call stack rather than at the beginning of a new call stack.
+
+**************************************************************************************************
+Locale is used in Java for various purposes such as formatting of date and time, currency, numbers, and messages in different languages based on the user's locale settings. It also provides information about the user's environment, such as the default time zone and character encoding.
+
+**Serialization in Java is the process of converting an object into a stream of bytes so that it can be easily stored in a file or sent over a network. The purpose of serialization is to save the state of an object and recreate it later as needed, without losing any of its data. This is useful in many scenarios, such as saving data to a file, sending objects over a network, or caching objects for later use.
+
+**Deserialization is the process of converting the serialized data into its original form, so that it can be used in the application. It is used to recreate objects that were previously serialized and stored in a file or sent over the network. The deserialization process is used to read the serialized objects from a file, stream, or network and convert them back into objects.
+The purpose of deserialization is to restore the state of an object that was previously serialized. This is useful in many situations such as data storage, caching, and distributed computing.
+
+62,63.
+******************************************Collection Framework****************************************
+
+HashMap and treeMap
+HashSet and HashMap
+TreeSet and TreeMap
+HashSet and Treeset, LinkedHashSet
+HashMap and HashTable
+Array and List
+ArrayList and Linkedlist
+ArrayList and Vector
+ArrayList and Array
+List and set
+Array and List
+Priority Queue
+LinkedHashmap
+Internal Working of hashmap
+Internal working of hashset
+
+----------------------------------------------------------------------------------------------------------
+
+***HashMap and treeMap both are the implementation of map interface. Both HashMap and TreeMap stores key-value pairs.
+In hashmap, 1 null key is allowed but in treemap it's not allowed.
+In treemap, elements will be in sorted order based on keys, hashmap will not .
+In hashmap, it's time-complexity will be o(1) but in treemap it will be o(log(n)) as it uses red-black tree
+
+** HashSet and hashmap -
+Hashset is an implementation of set interface,It stores the collection of unique elements and doesn't allow duplicate values.
+Hashcode is calculated based on keys to store key value pairs.
+
+Hashmap is an implementation of map interface, It stores key value pairs. It doesn't allows duplicate keys.
+
+**TreeSet and TreeMap-
+TreeSet is an implementation of set interface. The elements will be in sorted order and duplicate values are not allowed.
+TreeMap is an implementation of map inteface. The Key-value pairs will be in sorted order based on keys. Duplicate keys are not allowed.
+
+**HashSet and Treeset-
+HashSet and Treeset both are the implementation of set interface. 
+HashSet is implemented using hashtable data structure .It doesn't maintain any specific order of its elements. 
+TreeSet is implemented using a self-balancing binary search tree(Red-black tree). It maintains the elements in sorted order.
+HashSet allows null value but treeset doesn't.
+
+**ArrayList and LinkedList both are implementation of list interface.
+ArrayList is implemented using Array but linkedlist is implemented using  List.
+Insertion and del in middle in arrayList is in-efficient(bcz all the elements needs to be shifted) but in LinkedList is Efficient
+ArrayList provides contiguous memory allocation but linkedlist doesn't.
+ArrayList doesn't maintain the insertion order but Linkedlist does.
+
+**ArrayList and Vector-
+ArrayList is not synchronized and not thread safe. But vector is synchronized. So vector is slower as compare to arraylist. and Performance of arrayList is better.
+When it needs to add additional elements , then arrayList will inc its size by 50% but vector will inc by 100% So memory wastage can happen in case of vector.
+
+Array vs ArrayList-
+Array is not directly the part of collection framework.
+Array is in fixed size whereas ArrayList is in dynamic size.
+Array can store primitive data type elements as well as Obj but arrayList always stores objects.
+
+List and set difference-
+List allows duplicate elements whereas set doesn't allows.
+List maintains insertion order whereas set doesn't.
+List provides index based access to the elments whereas set doesn't.
+
+Array and List-
+Arary have fixed data size and list are dynamic in size.
+Array can store elements of any type but list stores only obj.
+Array are allocated as contiguous block of memory but list don't.
+
+Priority Queue is an implementaion of Queue interface. Elements are stored on the basis of priority.
+Internally, PriorityQueue is implemented as a heap data structure, which is a binary tree-based structure where each parent node is smaller or equal to its child nodes (in case of a min-heap) or larger or equal to its child nodes (in case of a max-heap). In a PriorityQueue, the highest priority element (i.e., the smallest element in case of a min-heap or the largest element in case of a max-heap) is always stored at the front of the queue and can be retrieved using the peek() or poll() method.
+
+**LinkedHashMap is the subclass of hashmap, that maintains the insertion order of entries.
+**ConcurrentHashMap is used for manintaining thread safety.
+**NavigableMap is a sub-interface of the Java Map interface that provides an efficient way of storing key-value pairs in sorted order. 
+
+Q.HashSet Vs TreeSet-
+1.The elements of HashSet are not in sorted order whereas, in TreeSet elements will be in ascending order.
+2.HashSet is faster than TreeSet bcz  provides constant-time performance for most operations like add(), remove() and contains() But treeSet takes O(Log n) for search, insert, and delete, TreeSet bcz internally it uses red-black tree for its implementation.
+3.Null objects are allowed in HashSet. TreeSet does not allow null objects and throws a NullPointerException.
+  
+
+Q.Stack vs Heap-
+stack is used for method invocations and local variables, while the heap is used for dynamic memory allocation of objects. The stack is managed automatically by the JVM, while the heap requires manual memory management through the use of garbage collection.
+
+-----------------------------------------------------------------------------
+
+Q. Priority Queue and working-
+PriorityQueue is an implementation of the Queue interface that provides a way to store elements in a priority order.
+
+Internally, PriorityQueue is implemented as a heap data structure, which is a binary tree-based structure where each parent node is smaller or equal to its child nodes (in case of a min-heap) or larger or equal to its child nodes (in case of a max-heap). In a PriorityQueue, the highest priority element (i.e., the smallest element in case of a min-heap or the largest element in case of a max-heap) is always stored at the front of the queue and can be retrieved using the peek() or poll() method.
+
+-----------------------------------------------------------------------------------
+
+Q.TreeSet and its internal working-
+TreeSet in Java is an implementation of the SortedSet interface that uses a Red-Black tree data structure to store its elements. The Red-Black tree is a self-balancing binary search tree that ensures that the height of the tree is always logarithmic to the number of elements in the tree.
+
+When elements are added to a TreeSet, they are inserted into the Red-Black tree in their sorted order based on the natural ordering of the elements (i.e., the order imposed by their compareTo() method). If the TreeSet is created with a custom Comparator, then the elements are inserted based on the order imposed by the custom Comparator.
+
+During insertion, the Red-Black tree is rebalanced to ensure that it remains balanced and to maintain its properties. The rebalancing process involves performing rotations and color changes on the nodes of the tree to ensure that the Red-Black tree properties are maintained.
+
+When elements are removed from a TreeSet, the Red-Black tree is modified accordingly to ensure that the tree remains balanced and to maintain its properties. The removal process involves finding the node to be removed, and then performing rotations and color changes on the nodes of the tree to ensure that the Red-Black tree properties are maintained.
+
+---------------------------------------------------------------------------------------------
+
+**Internal working of hashmap-
+When a key-value pair is added to a HashMap, the key is hashed using the hashCode() method and the resulting hash code is used to compute the index of the corresponding bucket (an array of linked list nodes) in the hash table. If multiple keys have the same hash code, they are stored in the same bucket, forming a linked list. Each node in the linked list contains the key-value pair and a reference to the next node in the list.
+
+To retrieve a value for a given key, the hashCode() method is first called on the key to find the corresponding bucket in the hash table. If multiple keys are present in the same bucket, the equals() method is used to find the correct key-value pair in the linked list.
+
+When an element is added to a HashMap, the hash code of the key is computed using the hashCode() method. The hash code is then used to compute the index of the bucket in which the element should be stored in the hash table. If multiple elements have the same hash code, they are stored in the same bucket using a linked list.
+
+-----------------------------------------------------------------------------------------
+
+**HashSet and its internal working-
+HashSet is an implementation of the Set interface that uses a hash table to store its elements. The hash table uses an array of buckets to store the elements, and each bucket can contain multiple elements.
+
+When an element is added to a HashSet, the hash code of the element is computed using the hashCode() method. The hash code is then used to compute the index of the bucket in which the element should be stored in the hash table. If multiple elements have the same hash code, they are stored in the same bucket using a linked list.
+
+If the size of the HashSet exceeds a certain threshold, the hash table is resized to improve performance.
+It will get resized by:-
+newCapacity = (oldCapacity * 2) + 1.
+
+**Load factor- Ratio of number of elements in the hashtable to the total no of of buckets in the table.
+
+--------------------------------------------------------------------------------------------
+
+Q.ConcurrentHashMap and working
+
+=>ConcurrentHashMap is a thread-safe implementation of the Map interface in Java. It is designed to be used in concurrent or multi-threaded environments, where multiple threads can access and modify the map concurrently without the need for explicit synchronization.
+
+ConcurrentHashMap uses a technique called lock striping to provide thread-safety. It divides the map into multiple segments or stripes, and each segment is protected by its own lock. When a thread wants to modify a particular segment, it acquires the lock associated with that segment only, instead of acquiring a global lock for the entire map. This allows multiple threads to operate on different segments concurrently, without blocking each other.
+
+=>The hash code value of an object is used to find the bucket where the object is stored, and then the equals() method is used to check if the object is already present in that bucket.
+
+------------------------------------------------------------------------------------------------------------
+#Fail-fast iterator: A fail-fast iterator throws a ConcurrentModificationException if a collection is modified while it is being iterated. This is because fail-fast iterators are designed to detect any structural modification (addition or removal of elements) made to the collection while the iterator is iterating over it. Fail-fast iterators use the underlying collection's modCount variable to keep track of the number of structural modifications made to the collection. If the modCount value changes during iteration, it indicates that the collection has been modified, and a ConcurrentModificationException is thrown to prevent any further iteration.
+Ex- ArrayList, Linkedlist, Hashset,Hashmap,treemap
+
+#Fail-safe iterator: A fail-safe iterator does not throw a ConcurrentModificationException if a collection is modified while it is being iterated. Instead, it operates on a copy of the collection that is created at the time of iteration. Fail-safe iterators do not use the underlying collection's modCount variable to keep track of modifications, but rather use their own copy of the collection to iterate over. Any modification made to the collection after the iterator has been created will not be visible to the fail-safe iterator.
+Ex-ConcurrentHashMap,ConcurrentSkipListMap,CopyOnwriteArrayList
+
+#.A blocking queue is a queue that blocks when you try to dequeue an element from it and the queue is empty, or when you try to enqueue an element to it and the queue is full.
+
+***********************************JVM Memory Structure*****************
+
+1. Method Area
+2. Heap Area
+3. Stack Area
+4. PC Registers
+
+1.Method Area:-
+The method area is a region of memory in the Java Virtual Machine (JVM) memory structure where the class-level data is stored.The method area is shared among all threads of the Java application, and it is created when the JVM is started.
+
+The method area is used to store data about classes and interfaces that are used by the Java application which includes:-
+
+1.Class name, superclass name, and interfaces implemented
+2.Fields and their data types
+3.Method bytecode, method signatures, and exception tables
+4.Static variables and their values
+5.Constant pool, which stores constants used by the class
+
+2.Heap Area:-
+Heap stores the actual objects. It creates when the JVM starts up.When you use a new keyword, the JVM creates an instance for the object in a heap. While the reference of that object stores in the stack. When heap becomes full, the garbage is collected.If the Java application runs out of heap space, it can cause an OutOfMemoryError.It can be fixed or dynamic size.
+
+Heap is divided into the following parts:
+
+Young generation
+Survivor space
+Old generation
+Permanent generation
+Code Cache
+
+3.Stack Area:-
+Stack Area generates when a thread creates. It can be of either fixed or dynamic size. 
+When a method is called, a new frame is created on the stack to store the method's local variables and method arguments.
+
+The stack area is used to store primitive data types, object references, and return addresses. The stack is generally faster to access than the heap because the stack is more localized and has a smaller access time.
+
+It is important to note that the stack area has a limited size, and exceeding the stack size can cause a StackOverflowError. This can happen when a method calls itself recursively too many times, or when a method uses too many local variables.
+
+4.Program Counter Registers:-
+When a thread is created, the program counter register is initialized to zero. As the thread executes instructions, the program counter register is incremented to point to the next instruction to be executed.
+
+The program counter register is used by the JVM to implement various features, such as exception handling, synchronization, and bytecode verification. For example, when an exception is thrown, the program counter register contains the address of the instruction that caused the exception  This allows the JVM to determine the appropriate exception handling code to execute.
+
+
+*******************************************Java Heap**********
+In Java, a heap is a chunk of memory which is shared among all threads. In a heap, all class instances and the array is allocated.It is created when JVM starts-up.
+
+The heap is divided into two parts (or generations):
+
+1.Young Generation (or Young Space or Nursery)- Eden space+ 2 survier spaces s0 and s1
+2.Old Generation (or Old Space or Tenured)
+
+1.Young Generation:-It is the part of the heap. It is reserved for allocation of objects. When it becomes full, the minor GC collects the garbage from Eden to one of the survivor spaces. Objects that are available for garbage in one of the survivor spaces are cleared, and remaining objects move to the other survivor space. Hence, there is always one empty survivor space. All objects that live long in the young space are transfers to old space.
+
+a)Eden: All objects are first created here. It is bigger than the two survivor spaces. It consumes 76% space of the young generation. When Eden becomes full, a minor GC is triggered.
+
+b)Survivor Spaces: It is a pool of objects that have survived the garbage collection of the Eden space. There are two survivor spaces called survivor from (S0) and survivor to (S1). It avoids memory fragmentation. The important point about the survivor is one of the two survivors is always empty.
+
+All the live objects from the whole young generation (Eden space + Survivor from space) are moved to the Survivor To space. After completion of this process, a survivor from space is empty. The process of copying the live objects between survivor spaces is repeated several times until some objects are considered to have matured and old enough. Such objects can thus move to old space instead of move into other survivor space. To determine whether the object is ready to move into old space, GC counts the total number of collections an object survived. The life of the objects increased if it does not collect.
+
+2.Old Generation:It contains objects that are lives long. This process is called an old collection. Long-lived objects survived after many rounds of minor GC. When the old space is about to reach its limit, major resources of old memory are cleared. Usually, the garbage collector is performed in the old generation when it reaches its limit. An old generation garbage collector is called a major GC. It takes a too long time to remove the objects.
+
+
+
+*********************************************How Garbage Collection Works*********************
+
+Garbage collection is the process by which a computer's memory manager automatically identifies and frees up memory that is no longer being used by a program.
+
+The Eden space is where new objects are allocated in memory. When an object is created in Java, it is initially stored in the Eden space. However, the Eden space is relatively small and can quickly become filled with new objects. When the Eden space becomes full, the JVM triggers a minor garbage collection process, during which any objects that are no longer being used are removed from memory.
+
+The Young generation is made up of the Eden space and two Survivor spaces. During a minor garbage collection process, any objects that have survived one or more garbage collection cycles are moved from the Eden space to one of the Survivor spaces. Objects that have survived a certain number of garbage collection cycles are eventually moved to the Old generation.
+
+The Old generation is where long-lived objects are stored. During a major garbage collection process, the JVM checks the Old generation for objects that are no longer being used and frees up any memory that is no longer needed.
+
+------------------------------------------------------------------------------------------------------
+
+Q.What is gc()?
+
+=>gc() is a method that is used to suggest that the JVM (Java Virtual Machine) perform garbage collection. It is not guaranteed that garbage collection will occur immediately after invoking this method, but it provides a hint to the JVM to schedule a garbage collection cycle.
+
+the Garbage Collector (GC) is a separate background thread that runs periodically to reclaim memory used by objects that are no longer referenced by the application. (Concurrent Garbage collector).
+
+----------------------------------------------------------------------------------------------------------
+
+Q. What are the different garbage collection methods?
+
+=>The JVM actually provides four different garbage collectors:-
+
+1.Serial Garbage Collection means that the garbage collector does this one object at a time, in a sequence. It goes through each object in the memory space, checking if it's still being used by the program, and if it's not, it deletes it. This process can take some time and can cause the program to pause momentarily while the garbage collector is doing its work.
+
+2.the Parallel Garbage Collector works by dividing the memory space into multiple parts and having multiple garbage collectors work on different parts at the same time. This way, they can go through the memory space much faster than if they were doing it one at a time.
+
+3.Concurrent Garbage Collector works by checking the memory space of the computer program in the background while the program is still running. It looks for objects that are no longer being used and starts to delete them while the program is still running. This way, the program doesn't have to stop and wait for the garbage collector to finish its work.
+
+4.G1 Garbage Collector-G1 organizes the heap into regions and performs garbage collection on individual regions rather than the entire heap. This approach allows it to avoid the full heap traversal that the CMS collector needs, which can lead to faster garbage collection.
+
+----------------------------------------------------------------------------------------------------------------
+
+Q.What is finalize keyword in java?
+
+=>finalize() method in Java is a special method that is called by the garbage collector before an object is removed from memory. It's like a last chance for the object to do something before it's thrown away, such as releasing any resources it was using.
+
+Q.Early binding and Late Binding
+=>The early binding (static binding) refers to compile time binding(method overloading) and late binding (dynamic binding) refers to runtime binding(overriding).
+
+Q.Static and non-static context:-
+
+We can call static method inside the static method :- by classname.methodName , by method name, by creating the instance of the class
+
+We can call non-static method inside static method by creating the instance of the class
+
+We can call static method inside the non-static method directly. 
+
+We can call non-static method inside non-static method directly.
+
+Non-static var cannot be called from a static method.
+
+Q.If we don't create Exception in the method in parent class and we try to  add a exception in child class it will give compiletime error.
+The exception which is the subclass of another exception only that can be used inside the method of subclass.
+
+
+****************************************************OOPS************************************************************
+
+
+**************************Inheritance***************************
+
+Inheritance- Meaning one class can use the property of another class by extending it.
+
+1. Single inheritance- A class can inherit the feature of one superclass Example class B extends A{}
+2. Multiple inheritance-A class can inherit the feature of more than one superclass Ex- class C extends A,B{}
+3. Multilevel inheritance- A derived class can inherit the feature of base class and derived class will also act as a base class for another class 
+Ex- Class B extends A{} classs C extends B{}
+4. Hierarical inheritnce-> one class serves as a superclass (base class) for more than one subclass. Ex- class B extends A{} class C extends A{}
+
+
+Q. Why java doesn't support multiple inheritance ? 
+=>because if a class will inherit the feature of more than one class and all the classses will have the same method then it will not be able to understand which method to call so it will give error.
+
+***************Polymorphism***********************************
+
+Q. Polymorphism:-  the ability of a message to be displayed in more than one form. 
+compile time polymorphism- method overloading, operator overloading
+Run time polymorphism- virtual functions/ method overriding
+
+1.compile time polymorphsm-
+Method overloading- Methods with same name but different parameter
+
+2.Runtime polymorphism-
+Method overriding- The method in the subclass must have the same name, return type, and parameter list as the method in the superclass.
+
+*Final methods can not be overridden.
+*Static methods can not be overridden. Static method in base class will be hidden in subclass
+*We can call parent class method in overriding method using super keyword.
+super.methodname()
+*We can not override constructor as parent and child class can never have constructor with same name (Constructor name must always be same as Class name).
+*If the super-class overridden method does not throw an exception, subclass overriding method can only throws the unchecked exception, throwing checked exception will lead to compile-time error.
+
+
+********************************Abstraction************************************
+
+Q Abstraction-
+=>data abstraction deal with exposing the interface to the user and hiding the details of implementation.
+It can be achieved using interface and abstract classes.
+Q.Why to use it?
+1.Helps to increase the security of an application or program as only essential details are provided to the user.
+2.It reduces the complexity of viewing things.
+3.Hides implementation details and exposes only relevant information.
+
+Disadvantages of Abstraction-
+=>Overuse of abstraction can result in decreased performance due to the additional layers of code and indirection.
+Abstraction can make it more difficult to understand how the system works.
+
+Q. Abstract class-
+abstraction refers to hiding the internal implementation of the feature and only showing the functionality to the users.ie.
+showing only the required features, and hiding how those features are implemented behind the scene.
+So, Java abstract class is a class that can not be initiated by itself, it needs to be subclassed by another class to use its properties. An abstract class is declared using the “abstract” keyword in its class definition.
+
+Q.Properties of Abstract class:-
+1.An instance of an abstract class can not be created.
+2.abstract class can contain constructors in Java. And a constructor of an abstract class is called when an instance of an inherited class is created.
+3.We can have an abstract class without any abstract method.
+4.There can be a final method in abstract class but any abstract method in class(abstract class) can not be declared as final
+ie.Abstract classes can also have final methods (methods that cannot be overridden) but those final methods can not be abstract.
+5.We can define static methods in an abstract class
+ie.we can define static methods in an abstract class that can be called independently without an object. 
+6.If a class contains at least one abstract method then compulsory that we should declare the class as abstract.otherwise we will get a compile-time error 
+7.If the Child class is unable to provide implementation to all abstract methods of the Parent class then we should declare that Child class as abstract so that the next level Child class should provide implementation to the remaining abstract method.
+
+Q. Why to use abstract class?
+=>The main purpose of the abstract class is to create a base class from which many other classes can be derived.
+=>An abstract class provides the hiding the details of implementation.
+
+Q.Why abstract class is faster than interface?
+An abstract class is faster than an interface because the interface involves a search before calling any overridden method in Java whereas attract class can be directly used. 
+
+
+******************************************Encapsulation************
+
+
+Q. Encapsulation-
+encapsulation Means binding up data members and functions together.It is achieved by declaring the instance variables of a class as private, which means they can only be accessed within the class. To allow outside access to the instance variables, public methods called getters and setters are defined, which are used to retrieve and modify the values of the instance variables, respectively.
+
+Q.Advantages of Encapsulation:  
+
+1.Data Hiding: it is a way of restricting the access of our data members by hiding the implementation details. Encapsulation also provides a way for data hiding. The user will have no idea about the inner implementation of the class. It will not be visible to the user how the class is storing values in the variables. The user will only know that we are passing the values to a setter method and variables are getting initialized with that value.
+
+2.Increased Flexibility: We can make the variables of the class read-only or write-only depending on our requirements. If we wish to make the variables read-only then we have to omit the setter methods like setName(), setAge(), etc. from the above program or if we wish to make the variables write-only then we have to omit the get methods like getName(), getAge(), etc. from the above program
+
+3.Reusability: Encapsulation also improves the re-usability and is easy to change with new requirements.
+
+4.Improves security of an object’s internal state by hiding it from the outside world.
+
+
+
+************************************Interface*******************************
+
+
+Q. Interface-
+1.The interface in Java is a mechanism to achieve abstraction. There can be only abstract methods in the Java interface, not the method body. It is used to achieve abstraction and multiple inheritance in Java.
+2.an interface can have methods and variables, but the methods declared in an interface are by default abstract (only method signature, no body). 
+3.Interface do not have constructor. 
+4.If a class implements an interface and does not provide method bodies for all functions specified in the interface, then the class must be declared abstract.
+5.It is used to provide total abstraction. That means all the methods in an interface are declared with an empty body and are public and all fields are public, static, and final by default and methods are public and abstract by default.
+
+Q.Why do we use an Interface?
+=>It is used to achieve total abstraction.
+=>Any class can extend only 1 class but can any class implement infinite number of interface.
+=>Since java does not support multiple inheritances in the case of class, by using an interface it can achieve multiple inheritances.
+**. A class can implement multiple interfaces, which allows it to inherit behavior from multiple sources.
+In summary, interfaces provide a way to achieve multiple inheritance in programming languages that do not support it directly, by allowing a class to inherit behavior from multiple sources through the implementation of multiple interfaces.
+
+Q.why use interfaces to achieve abstraction when we have abstract classes?
+=>The reason is, abstract classes may contain non-final variables, whereas variables in the interface are final, public and static.
+
+**Prior to JDK 8, the interface could not define the implementation. We can now add default implementation for interface methods. This default implementation has a special use and does not affect the intention behind interfaces.
+**Another feature that was added in JDK 8 is that we can now define static methods in interfaces that can be called independently without an object.ie. interface name.methodname() .
+
+#Extending Interfaces
+=>One interface can inherit another by use of keyword extends. When a class implements an interface that inherit another interface, it must provide implementation for all method required by the interface inheritance chain.
+
+**Java 9 onwards, interfaces can contain the following also:
+
+Static methods
+Private methods
+Private Static methods
+
+** A class can have protected interface but an interface cannot have non-public interface.
+
+**. A class can implement multiple interfaces, which allows it to inherit behavior from multiple sources.
+In summary, interfaces provide a way to achieve multiple inheritance in programming languages that do not support it directly, by allowing a class to inherit behavior from multiple sources through the implementation of multiple interfaces.
+
+Q.nested interfaces can be used for a variety of purposes, including:
+
+1.To group related interfaces together: By nesting one interface within another, you can organize related interfaces in a more logical and readable way. This can make your code easier to understand and maintain.
+2.To create more secure code: By making an interface nested inside a class, you can limit its scope and prevent it from being accessed outside of that class. This can make your code more secure and less prone to errors.
+3.To implement multiple interfaces: By nesting interfaces, you can implement multiple interfaces in a single class, without cluttering up the global namespace with too many interface names.
+4.To create callbacks: Nested interfaces can be used to create callback functions, where an object can be passed to another object and that object can call back a method defined in the nested interface.
+5.To define a contract between classes: By using nested interfaces, you can define a contract between classes, where each class implements the same interface, but provides its own implementation. This can make your code more modular and easier to test.
+
+Q.Marker interface in Java?
+=>It is an empty interface (no field or methods). Examples of marker interface are Serializable, Cloneable and Remote interface. All these interfaces are empty interfaces. 
+
+Examples of Marker Interface :-
+1.Cloneable interface
+2.Serializable interface
+3.Remote interface 
+
+Q.functional interface
+=>It is an interface that contains only one abstract method. They can have only one functionality to exhibit .
+We can also call Lambda expressions as the instance of functional interface.
+
+Q.Some Built-in Java Functional Interfaces
+Since Java SE 1.8 onwards, there are many interfaces that are converted into functional interface. All these interfaces are annotated with @FunctionalInterface. These interfaces are as follows – 
+
+Runnable –> This interface only contains the run() method.
+Comparable –> This interface only contains the compareTo() method.
+ActionListener –> This interface only contains the actionPerformed() method.
+Callable –> This interface only contains the call() method.
+
+Java SE 8 included four main kinds of functional interfaces:
+1.Consumer
+2.Predicate
+3.Function 
+4.Supplier
+
+Consumer -> Bi-Consumer
+Predicate -> Bi-Predicate
+Function -> Bi-Function, Unary Operator, Binary Operator 
+
+Q.Consumer and Bi-Consumer-The consumer interface takes only one argument, but on the other side, the Bi-Consumer interface takes two arguments. Both, Consumer and Bi-Consumer have no return value. 
+Consumer<Integer> consumer = (value) -> System.out.println(value);
+It is used in iterating through the entries of the map. 
+
+Q.Predicate and Bi-Predicate-The Predicate interface takes only one argument, but on the other side, the Bi-Predicate interface takes two arguments. Both,
+will return boolean value
+
+public interface Predicate<T> {
+ 
+    boolean test(T t);
+ 
+}
+
+using lambda -
+Predicate predicate = (value) -> value != null;
+
+using class-
+public class CheckForNull implements Predicate {
+ 
+    @Override
+    public boolean test(Object o) {
+ 
+        return o != null;
+ 
+    }
+}
+
+Q.Function and Bi-Function-
+A function is a type of functional interface in Java that receives only a single argument and returns a value after the required processing
+but Bi-Function takes 2 values as an arg and returns a value .
+
+Q.Supplier functional interface -
+The Supplier functional interface is also a type of functional interface that does not take any input or argument and yet returns a single output.
+The different extensions of the Supplier functional interface hold many other supplier functions like BooleanSupplier, DoubleSupplier, LongSupplier, and IntSupplier.
+
+The super keyword in java is a reference variable that is used to refer to parent class objects. 
+
+***********************************************Exceptions**********************************************
+
+an exception is an event or condition that occurs during the execution of a program and disrupts the normal flow of instructions. Exceptions can occur due to a variety of reasons, such as errors in user input, problems with hardware or software, or issues with network connections.
+
+When an exception occurs, the program typically stops executing and the control is transferred to an exception handler, which is a section of code that is designed to handle the specific type of exception that occurred. The exception handler can then take appropriate actions, such as displaying an error message, logging the error, or attempting to recover from the error.
+
+Major reasons why an exception Occurs
+Invalid user input
+Device failure
+Loss of network connection
+Physical limitations (out of disk memory)
+Code errors
+Opening an unavailable file
+
+Errors represent irrecoverable conditions such as Java virtual machine (JVM) running out of memory, memory leaks, stack overflow errors, library incompatibility, infinite recursion, etc. Errors are usually beyond the control of the programmer, and we should not try to handle errors.
+
+Checked Exceptions/compile-time exceptions:-
+Ex- ioExcep, FileNotFoundExcep, SQLExceptions
+
+IOException is a generic exception that can occur during any I/O operation, such as reading or writing to a file, socket or network connection, and can be caused by a variety of reasons such as connectivity issues, file permission issues, hardware failure, etc.
+If the specified file exists and can be successfully opened, the FileInputStream constructor will create a stream for the file and no IOException will be thrown.
+
+FileNotFoundException, on the other hand, is a specific type of IOException that occurs when a file with the specified name and path cannot be found. This usually happens when the file does not exist or the path is incorrect.
+
+SQLException: This exception occurs when there is a problem with a database operation, such as a failed connection or invalid SQL syntax
+
+Unchecked Exceptions/runtime Exception-
+
+
+*****************************Java db Connection**************
+
+1. Load the driver class
+2. Establish Connection-getConnection(URL,username,password) or getConnection(URL); 
+3.Create And Execute Statement:-
+   a)Statement statemnt1 = conn.createStatement(); 
+or,String select_query = “Select * from states where state_id = 1”;
+PreparedStatement prpstmt = conn.prepareStatement(select_query);
+or,CallableStatementcallStmt = con.prepareCall("{call procedures(?,?)}");
+
+b) execute it using -  executeUpdate(String sql) or execute(String sql) or executeBatch()
+
+4.Retrieve Results- ResultSet rs 1= statemnt1.executeQuery(QUERY));
+5.Close Connection
+
+
+*********************************Interview Questions********************************************
+
+Q.what is jit in java?
+=>JIT stands for Just-In-Time compilation and is a feature of the Java Virtual Machine (JVM). It is responsible for dynamically compiling Java bytecode into machine code that can be directly executed by the underlying hardware.
+It will detect which are portions of the code that are frequently executed, then it will compile those byte code into machine code, then the JVM executes the optimized code directly. it improves the performance by not executing the code line by line.
+
+=>JIT stands for Just-In-Time compilation and is a feature of the Java Virtual Machine (JVM). It is responsible for dynamically compiling Java bytecode into machine code that can be directly executed by the underlying hardware.
+
+When a Java program is executed, the JVM initially interprets the bytecode instructions one by one, executing them sequentially. However, to improve performance, the JVM employs a Just-In-Time compiler to optimize and compile portions of the bytecode into machine code.
+
+Here's how the JIT compilation process typically works:
+
+Interpretation: The JVM starts by interpreting the bytecode of a method, executing it line by line.
+
+Profiling: As the code is being interpreted, the JVM collects runtime information, such as how frequently certain methods or loops are executed.
+
+Hotspot detection: Based on the collected profiling information, the JVM identifies "hotspots," which are portions of the code that are frequently executed.
+
+Just-In-Time compilation: When a hotspot is detected, the JIT compiler dynamically compiles the corresponding bytecode into highly optimized machine code specific to the underlying hardware architecture.
+
+Machine code execution: Once the bytecode is compiled into machine code, the JVM executes the optimized code directly, bypassing the interpretation step.
+
+The JIT compilation process aims to improve performance by selectively optimizing frequently executed code segments. By compiling code to machine code, the JVM can take advantage of hardware-specific optimizations, such as instruction pipelining and CPU caches.
+
+The JIT compiler also employs various optimization techniques, such as inlining method calls, loop unrolling, and constant folding, to further enhance performance.
+
+It's worth noting that the JIT compilation process is dynamic and adaptive. If the runtime behavior of the program changes, the JVM can recompile and optimize the code again to adapt to the new execution patterns.
+
+Overall, JIT compilation is a crucial component of the Java platform that helps bridge the gap between the portability of Java bytecode and the performance benefits of native machine code execution.
+
+--------------------------------------------------------------------
+
+Q.where does gc sits in jvm architecture
+
+=>Garbage Collection (GC) is a crucial component of the Java Virtual Machine (JVM) that manages memory allocation and deallocation for Java objects. In the JVM architecture, the Garbage Collector sits in the Runtime Data Areas, specifically in the Heap area.
+
+The JVM's Heap is the runtime data area where objects are allocated. It is divided into several regions, including the Young Generation, the Old Generation (also known as the Tenured Generation), and the Permanent Generation (in older JVM versions).
+
+The Garbage Collector primarily operates in the Young Generation and the Old Generation regions. Its main responsibilities are:
+
+Allocation: When a new object is created, the Garbage Collector is responsible for allocating memory for that object within the Heap.
+
+Memory Reclamation: When objects are no longer needed or become unreachable, the Garbage Collector identifies them and reclaims the memory occupied by these objects.
+
+The process of garbage collection involves several phases, such as marking, copying, and compacting, depending on the specific garbage collection algorithm being used. These algorithms, such as the generational garbage collection algorithm, help manage memory efficiently by taking advantage of the observation that most objects become unreachable shortly after their creation.
+
+While the Garbage Collector primarily operates in the Heap, it also has some involvement with other components of the JVM architecture. For example, the Garbage Collector may interact with the Classloader subsystem to identify unloaded classes and reclaim their memory. Additionally, it may use runtime support from the Execution Engine to traverse object references and perform garbage collection activities effectively.
+
+It's worth noting that the JVM's architecture and Garbage Collector implementation can vary across different JVM implementations and versions. The JVM provides flexibility for different garbage collection algorithms, such as the Serial, Parallel, Concurrent, and G1 garbage collectors, each with its own trade-offs in terms of performance and responsiveness.
+has context menu.
+
+-----------------------------------------------------------
+Garbage collection is the process by which a computer's memory manager automatically identifies and frees up memory that is no longer being used by a program.
+
+The Eden space is where new objects are allocated in memory. When an object is created in Java, it is initially stored in the Eden space. However, the Eden space is relatively small and can quickly become filled with new objects. When the Eden space becomes full, the JVM triggers a minor garbage collection process, during which any objects that are no longer being used are removed from memory.
+
+The Young generation is made up of the Eden space and two Survivor spaces. During a minor garbage collection process, any objects that have survived one or more garbage collection cycles are moved from the Eden space to one of the Survivor spaces. Objects that have survived a certain number of garbage collection cycles are eventually moved to the Old generation.
+
+The Old generation is where long-lived objects are stored. During a major garbage collection process, the JVM checks the Old generation for objects that are no longer being used and frees up any memory that is no longer needed.
+
+-----------------------------------------------------
+
+What is the difference between the IS-A relationship and HAS-A in Java?
+=> IS-A relationchip means inheritance, where one class will inherit the properties nad method pf another class
+Has-A means one class will have the reference of another class i.e one class will have one or more instance of another class.
+
+-------------------------------------------------------------
+Can abstract class implement interface in Java?
+=>Yes, then it must provide implementation of all the methods which is present in inteface.
+---------------------------------------------------
+
+How do you compare two String in Java? 
+1.equals method- compare 2 strings content
+compareTo- will compare the strings lexicographically will check if the string is smaller return -1, greater- return +1 equal , return 0
+------------------------------------------------------
+How to stop a thread in Java?
+=>a)By calling interrupt method on the thread that u want to stop.
+b)can define a boolean flag that is checked by the thread periodically. When the flag is set to true, it can execute the thread.
+
+Q. What is diff b/w runnable and callable?
+=> Run method of a runnable interface doesn't have return value, but call method will have a return value.
+Run method doesn't throw a checked exception where as call method does.
+
+Q. Diff b/w wait and sleep method in java?
+
+=>Wait method is responsible for inter-thread communication. When a thread calls wait on a object, it releases lock on the object and waits for the another thread to notify it.
+Sleep method is to pause the execution of thread for a specified period of time.
+It doesn't release any lock
+
+Q.What is semaphore synchroniser?
+=>Semaphore class is a synchronization mechanism that allows controlling access to a certain number of shared resources. It is part of the java.util.concurrent package and provides a way to limit the number of threads that can access a particular resource simultaneously.
+
+A Semaphore maintains a set of permits, which determine how many threads can enter a critical section or access a shared resource at the same time. The permits can be acquired and released by threads using the acquire() and release() methods, respectively.
+
+Q.Wait notify , notify all?
+
+=>
+wait():
+The wait() method is used to make a thread wait until another thread notifies it to resume. It releases the lock on the object and waits for another thread to call notify() or notifyAll() on the same object.
+When a thread calls wait(), it enters a waiting state until it receives a notification or a specified timeout occurs.
+The wait() method should be called within a synchronized block or method, as it requires the thread to hold the lock on the object it is waiting on.
+Multiple threads can wait on the same object, and they will be notified one by one in a FIFO (First-In-First-Out) order.
+notify():
+
+The notify() method wakes up a single thread that is waiting on the object's monitor. If multiple threads are waiting, only one of them is chosen to be notified, and the choice is arbitrary.
+When a thread calls notify(), it notifies a waiting thread to wake up and compete for the lock on the object.
+The notified thread can then reacquire the lock and continue its execution.
+notifyAll():
+
+The notifyAll() method wakes up all the threads that are waiting on the object's monitor. Each thread will then compete for the lock to resume execution.
+When a thread calls notifyAll(), all waiting threads are notified and moved from the waiting state to the runnable state. However, only one thread at a time can acquire the lock and proceed with its execution.
+It's important to note that these methods should be used within a synchronized context, such as a synchronized block or a synchronized method, to ensure proper thread synchronization and mutual exclusion.
+
+Here's a simple example that demonstrates the usage of wait(), notify(), and notifyAll():
+
+class MyTask {
+    public synchronized void performTask() {
+        try {
+            // Wait for a specific condition to be met
+            while (!condition) {
+                wait(); // Release the lock and wait for notification
+            }
+            // Continue with the task
+        } catch (InterruptedException e) {
+            // Handle interruption
+        }
+    }
+
+    public synchronized void notifyTask() {
+        // Update the condition
+        condition = true;
+        notify(); // Notify a single waiting thread
+    }
+
+    public synchronized void notifyAllTasks() {
+        // Update the condition
+        condition = true;
+        notifyAll(); // Notify all waiting threads
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyTask task = new MyTask();
+
+        // Create multiple threads that perform the task
+        for (int i = 0; i < 5; i++) {
+            Thread thread = new Thread(() -> {
+                task.performTask();
+            });
+            thread.start();
+        }
+
+ 
+
+  
